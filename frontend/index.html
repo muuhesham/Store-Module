@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Module</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+    rel="stylesheet">
+</head>
+<body>
+    <!--view-->
+    <div id="app">
+        <h1>Products.</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Tittle</th>
+                    <th>Price</th>
+                    <th>Description</th>
+                    <th>Catgory</th>
+                    <th>Image</th>
+                    <th>Rating</th>
+                    <th>Add</th>
+                </tr>
+            </thead>
+                <tr v-for="product in paginatedProducts">
+                    <td class="odd">{{ product.id }}</td>
+                    <td class="even">{{ product.title }}</td>
+                    <td class="odd">{{ product.price + "$" }}</td>
+                    <td class="even">{{ product.description }}</td>
+                    <td class="odd">{{ product.category }}</td>
+                    <td class="even"><img :src="product.image" alt="product.title" class="img"></td>
+                    <td class="odd">{{ product.rating.rate }} <img src="https://img.icons8.com/?size=100&id=19417&format=png&color=000000" class="star"></td>
+                    <td class="even"><button><a href="#">Order Now</a></button></td>
+                </tr>
+        </table>
+            <div class="pagination">
+                <button @click="prevPage" :disabled="currentPage === 1">Prev</button>
+                <span>{{currentPage}}</span>
+                <button @click="nextPage" :disabled="currentPage === 4">Next</button>
+            </div>
+        </div>
+        <!--source-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="index.css">
+</body>
+</html>
